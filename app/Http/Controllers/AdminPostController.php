@@ -30,7 +30,7 @@ class AdminPostController extends Controller
      */
     public function create()
     {
-       $categories = Category::get(['id','name']);
+        $categories = Category::get(['id','name']);
         return view('admin.posts.create',compact('categories'));
     }
 
@@ -43,20 +43,20 @@ class AdminPostController extends Controller
     public function store(CreatePostRequest $request)
     {
 
-    if ($request->file('photo_id')){
+        if ($request->file('photo_id')){
 
-        $file=$request->file('photo_id');
-        $name=$file->getClientOriginalName();
-        $file->move('images',$name);
-    }
+            $file=$request->file('photo_id');
+            $name=$file->getClientOriginalName();
+            $file->move('images',$name);
+        }
 
-    $input=$request->all();
-    $input['photo_id']=$name;
-    $input['user_id'] = Auth::user()->id;
-    Post::create($input);
+        $input=$request->all();
+        $input['photo_id']=$name;
+        $input['user_id'] = Auth::user()->id;
+        Post::create($input);
 
 
-    return redirect('admin/posts');
+        return redirect('admin/posts');
     }
 
     /**
@@ -78,7 +78,10 @@ class AdminPostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $posts=Post::findOrFail($id);
+
+        $categories=Category::get(['id','name']);
+        return view('admin/posts/edit',compact('posts','categories'));
     }
 
     /**
@@ -90,7 +93,19 @@ class AdminPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $posts=Post::findOrFail($id);
+     
+        $input=$request->all();
+        if($request->file('photo_id')){
+
+            $file =$request->file('photo_id');
+            $name=$file->getClientOriginalName();
+            $file->move('images',$name);
+            $input['photo_id']=$name;
+        }
+        $posts->update($input);
+
+        return redirect('/admin/posts');
     }
 
     /**
@@ -101,6 +116,8 @@ class AdminPostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::findOrFail($id)->delete();
+
+        return redirect('admin/posts');
     }
 }

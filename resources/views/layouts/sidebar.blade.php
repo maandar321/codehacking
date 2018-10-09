@@ -57,11 +57,8 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/UI/general.html"><i class="fa fa-angle-double-right"></i> General</a></li>
-                    <li><a href="pages/UI/icons.html"><i class="fa fa-angle-double-right"></i> Icons</a></li>
-                    <li><a href="pages/UI/buttons.html"><i class="fa fa-angle-double-right"></i> Buttons</a></li>
-                    <li><a href="pages/UI/sliders.html"><i class="fa fa-angle-double-right"></i> Sliders</a></li>
-                    <li><a href="pages/UI/timeline.html"><i class="fa fa-angle-double-right"></i> Timeline</a></li>
+                    <li><a href="{{route('categories.index')}}"><i class="fa fa-angle-double-right"></i> All categories</a></li>
+                    {{--<li><a href="{{route('')}}"><i class="fa fa-angle-double-right"></i> Edit Category</a></li>--}}
                 </ul>
             </li>
             <li class="treeview">

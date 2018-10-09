@@ -4,15 +4,9 @@
 
 
 
-    <h1><b>create post</b> </h1>
+     <h1><b>create post</b> </h1>
+     <br>
     <br>
-    <br>
-
-
-
-
-
-
 
     <form method="post" action="{{url('admin/posts')}}" enctype="multipart/form-data">
         {{csrf_field()}}

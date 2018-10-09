@@ -11,31 +11,47 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+//
 Auth::routes();
-
+//
 Route::get('/home', 'HomeController@index')->name('home');
+//
+//
+//
+//
+//
+//route::group(['middleware'=>'admin:18'],function (){
+//
+//
+//    Route::resource('admin/users','AdminUserController');
+//
+//    Route::resource('admin/posts','AdminPostController');
+//
+//    Route::resource('admin/categories','AdminCategoryController');
+//
+//
+//});
+//Route::get('/admin','HomeController@dashboard');
+//
+//route::get('admin/users/create','AdminUserController@create');
+//
+//
+//route::view('/welcome','welcome');
+//
+//
+//Route::get('user/profile', function () {
+//    return view('welcome');
+//})->name('profile');
 
 
 
+//inserting data through excel sheet
 
-
-route::group(['middleware'=>'admin'],function (){
-
-
-Route::resource('admin/users','AdminUserController');
-
-Route::resource('admin/posts','AdminPostController');
-
-
-});
-Route::get('/admin','HomeController@dashboard');
-
-route::get('admin/users/create','AdminUserController@create');
-
+Route::get('/', 'StudentController@index')->name('index');
+Route::post('import', 'StudentController@import')->name('import');
 
 
 
